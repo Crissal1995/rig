@@ -18,11 +18,9 @@ except ImportError:
     np, LinearRegression = [None] * 2
     has_libs = False
 
-name = 'RIG'
-extended_name = 'RIG - Reddit ID Grabber'
 
 description = '''
-{name}, a script to collect your most wanted IDs on Reddit.
+RIG - Reddit ID Grabber, a script to collect your most wanted IDs on Reddit.
 The ID is a six-digit base36 (numbers and ascii letters) unique identifier
 used by reddit in the format https://redd.it/abcdef.
 
@@ -30,12 +28,12 @@ First, create an app here: https://www.reddit.com/prefs/apps; then take the ID, 
 (optional) how many repetition (threads) you want with that particular API.
 
 The best way to get more parallelism is launching this script more times with different accounts.
-'''.format(name=extended_name)
+'''
 
 rootLogger = logging.getLogger()
 rootLogger.setLevel(logging.INFO)
 
-fileHandler = logging.FileHandler("{}.log".format(name.lower()))
+fileHandler = logging.FileHandler("rig.log")
 fileHandler.setFormatter(logging.Formatter("%(asctime)s - %(levelname)s - %(message)s"))
 rootLogger.addHandler(fileHandler)
 
@@ -107,7 +105,7 @@ def wait(watch_mode, target_id, reddit):
     subreddit = reddit.subreddit('all')
     rootLogger.info('Entering wait mode...')
     target_id_decoded = base36.loads(target_id) if not watch_mode else None
-    min_distance = 300
+    min_distance = 270
 
     if has_libs:
         ids, times = np.array([]), np.array([])
@@ -221,9 +219,9 @@ def main(watch_mode, config_json_fp, target_id=None):
     wait(watch_mode, target_id, payloads.pop().client)
     start_threads(threads)
 
-    logging.info('"{t}" {taken}'.format(
+    logging.info('"{t}" {status}'.format(
         t=target_id,
-        taken='TAKEN' if id_taken else 'LOST'
+        status='TAKEN' if id_taken else 'LOST'
     ))
     quit(0 if id_taken else 1)
 
