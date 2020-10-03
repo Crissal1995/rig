@@ -1,0 +1,13 @@
+{
+  "username": "<username>",
+  "password": "<password>",
+  "user_agent": "reddit:api:<username>",
+  "r/": "",
+  "clients": [
+    {
+      "id": "<app_id>",
+      "secret": "<app_secret>",
+      "repeat": 1
+    }
+  ]
+}
