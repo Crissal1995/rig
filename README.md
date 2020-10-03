@@ -24,3 +24,7 @@ The flag `-c CONFIG` is used to specify a configuration file (in JSON) to be use
 In `config.json` you will need to enter your credentials, the subreddit you want to post in - if blank, it will be used your username page - (it's preferred to leave it blank, because posting in subreddit is subject to flood control), and the 1-to-N clients you can use.
 
 For setupping clients, you need to head to https://www.reddit.com/prefs/apps and create an app (type must be __script__, other fields are insignificant), then take both ID (14 chars long) and Secret (27 chars long).
+
+You can also choose how many threads should be spawned with this specific client. A good value is 30. 
+
+The best parallelism is achieved by launching this script more times (with different accounts, and so `config.json` files).
