@@ -1,0 +1,4 @@
+base36==0.1.1
+numpy==1.19.2
+praw==7.1.0
+scikit-learn==0.23.2
