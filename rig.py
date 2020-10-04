@@ -219,7 +219,7 @@ def main(watch_mode, config_json_fp, target_id=None):
     wait(watch_mode, target_id, payloads.pop().client)
     start_threads(threads)
 
-    logging.info('"{t}" {status}'.format(
+    rootLogger.info('"{t}" {status}'.format(
         t=target_id,
         status='TAKEN' if id_taken else 'LOST'
     ))
